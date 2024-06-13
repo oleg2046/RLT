@@ -28,7 +28,7 @@ async def work_text(j_text):
                 l = datetime(i['dt'].year, i['dt'].month, i['dt'].day)
             elif j_text["group_type"] == 'hour':
                 l = datetime(i['dt'].year, i['dt'].month, i['dt'].day, i['dt'].hour)
-            if l in d.keys():
+            if l in d.keys() and datetime(i['dt'].year, i['dt'].month, i['dt'].day, i['dt'].hour) < dt_upto:
                 d[l].append(i['value'])
         f = {}
         for i, j in sorted(d.items()):
